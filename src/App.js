@@ -4,18 +4,13 @@ import './App.css';
 
 class App extends Component {
   fullName = () => 'Mary Smith';
+
   render() {
     const name = 'John';
     const city = () => 'Melbourne';
+    const loading = true;
+    const showName = true;
     return (
-      // Vanilla JS
-      // React.createElement(
-      //   'div',
-      //   { className: 'App' },
-      //   React.createElement('h1', null, 'Greetings')
-      // )
-
-      // JSX
       <div className='App'>
         <h1>
           Greetings From {name.toUpperCase()} Version {134.1 + 0.8}
@@ -25,10 +20,10 @@ class App extends Component {
         </h1>
         <h1>{this.fullName()}</h1>
         <label htmlFor=''></label>
+        {loading ? <h4>Loading is true</h4> : <h4>Loading is false</h4>}
+        {/* {showName ? <h4>My name is {name}</h4> : null} */}
+        <h4>Hello from {showName && name}</h4>
       </div>
-      // <>
-      // <h1>Greetings</h1>
-      // </>
     );
   }
 }
