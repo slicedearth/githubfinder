@@ -5,7 +5,7 @@ const Navbar = ({ icon, title }) => {
   return (
     <nav className='navbar bg-primary'>
       {/* eslint-disable-next-line */}
-      <a href='#'>
+      <a href='/'>
         <h1>
           <i className={icon}></i>&nbsp;{title}
         </h1>
