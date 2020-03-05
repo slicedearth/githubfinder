@@ -7,6 +7,7 @@ import Users from './components/users/Users';
 import axios from 'axios';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import About from './components/pages/About';
 class App extends Component {
   state = {
     users: [],
@@ -62,6 +63,8 @@ class App extends Component {
                   </Fragment>
                 )}
               />
+              {/* Second Route */}
+              <Route exact path='/about' component={About} />
             </Switch>
           </div>
         </div>
