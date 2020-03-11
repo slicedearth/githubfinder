@@ -6,11 +6,11 @@ const Navbar = ({ icon, title }) => {
   return (
     <nav className='navbar bg-primary'>
       {/* eslint-disable-next-line */}
-      <a href='/'>
+      <Link to='/'>
         <h1>
           <i className={icon}></i>&nbsp;{title}
         </h1>
-      </a>
+      </Link>
       <ul>
         <li>
           <Link to='/'>Home</Link>
