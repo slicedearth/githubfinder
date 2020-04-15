@@ -1,9 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-const SingleUser = ({ userDetails, getUser, match }) => {
+import githubContext from '../../context/github/GitHubContext';
+
+const SingleUser = ({ match }) => {
+  const githubContexts = useContext(githubContext);
+  const { userDetails, getUser } = githubContexts;
   useEffect(() => {
     getUser(match.params.login);
     console.log(match.params.login);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const {
     avatar_url,
@@ -20,7 +25,7 @@ const SingleUser = ({ userDetails, getUser, match }) => {
     public_repos,
     public_gists,
     following,
-    followers
+    followers,
   } = userDetails;
   return (
     <Fragment>

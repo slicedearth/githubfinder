@@ -46,7 +46,7 @@ const Search = ({ setAlert }) => {
   );
 };
 Search.propTypes = {
-  clearUsers: PropTypes.func.isRequired,
+  // clearUsers: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 export default Search;
