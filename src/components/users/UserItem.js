@@ -20,23 +20,26 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   //     html_url: 'https://github.com/mojombo'
   //   };
   return (
-    <div className='card text-center'>
-      <img
-        src={avatar_url}
-        alt=''
-        className='round-img'
-        style={{ width: '60px' }}
-      />
-      <h3>{login}</h3>
+    <div className='card has-text-centered'>
+      <figure className='container image is-128x128'>
+        <img src={avatar_url} alt='' className='is-rounded' />
+      </figure>
+
+      <p className='is-size-5'>{login}</p>
       <div>
-        <Link className='btn btn-dark btn-sm my-1' to={`/users/${login}`}>
-          More
+        <Link to={`/users/${login}`}>
+          <button
+            class='button is-dark is-medium is-rounded'
+            style={{ marginBottom: '0.5rem', marginTop: '0.5rem' }}
+          >
+            More
+          </button>
         </Link>
       </div>
     </div>
   );
 };
 UserItem.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
 };
 export default UserItem;

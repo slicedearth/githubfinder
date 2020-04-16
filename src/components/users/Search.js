@@ -21,27 +21,65 @@ const Search = ({ setAlert }) => {
   return (
     <div>
       <form onSubmit={onSubmit} className='form'>
-        <input
+        <div className='field'>
+          <div className='control'>
+            <input
+              class='input is-rounded'
+              type='text'
+              name='text'
+              placeholder='Search Users...'
+              value={text}
+              onChange={onChange}
+            ></input>
+          </div>
+          {/* <input
           type='text'
           name='text'
           placeholder='Search Users...'
           value={text}
-          onChange={onChange}
-        />
-        <input
+          
+        /> */}
+
+          {/* <input
           type='submit'
           value='Search'
           className='btn btn-dark btn-block'
-        />
+        /> */}
+          <div className='control'>
+            <button
+              class='button is-dark is-medium is-rounded is-fullwidth'
+              style={{ marginBottom: '0.8rem', marginTop: '0.8rem' }}
+            >
+              <span class='icon-is-small'>
+                <i class='fas fa-search'>&nbsp;</i>
+              </span>
+              Search
+            </button>
+          </div>
+
+          {/* </form> */}
+          {githubContexts.users.length > 0 && (
+            // <button
+            //   className='btn btn-light btn-block'
+            //   onClick={githubContexts.clearUsers}
+            // >
+            //   Clear
+            // </button>
+            <div className='control'>
+              <button
+                class='button is-danger is-medium is-rounded is-fullwidth'
+                onClick={githubContexts.clearUsers}
+                style={{ marginBottom: '0.8rem' }}
+              >
+                <span className='icon-is-small'>
+                  <i class='fas fa-eraser'>&nbsp;</i>
+                </span>
+                Clear
+              </button>
+            </div>
+          )}
+        </div>
       </form>
-      {githubContexts.users.length > 0 && (
-        <button
-          className='btn btn-light btn-block'
-          onClick={githubContexts.clearUsers}
-        >
-          Clear
-        </button>
-      )}
     </div>
   );
 };

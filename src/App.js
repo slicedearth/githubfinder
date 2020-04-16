@@ -1,7 +1,8 @@
 // eslint-disable-next-line
 import React, { Fragment, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
+// import './App.css';
+import './bulma.css';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
@@ -59,7 +60,7 @@ const App = () => {
       <Router>
         <div>
           <Navbar />
-          <div className='container'>
+          <div className='section is-narrow'>
             <Alert msg={msg} type={type} />
             <Switch>
               {/* First Route */}
