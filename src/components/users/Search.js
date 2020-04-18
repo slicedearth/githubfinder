@@ -22,6 +22,7 @@ const Search = ({ setAlert }) => {
     <div>
       <form onSubmit={onSubmit} className='form'>
         <div className='field'>
+          {/* Search Bar */}
           <div className='control'>
             <input
               className='input is-rounded'
@@ -32,23 +33,11 @@ const Search = ({ setAlert }) => {
               onChange={onChange}
             ></input>
           </div>
-          {/* <input
-          type='text'
-          name='text'
-          placeholder='Search Users...'
-          value={text}
-          
-        /> */}
-
-          {/* <input
-          type='submit'
-          value='Search'
-          className='btn btn-dark btn-block'
-        /> */}
+          {/* Search Button */}
           <div className='control'>
             <button
-              className='button is-dark is-medium is-rounded is-fullwidth'
-              style={{ marginBottom: '0.8rem', marginTop: '0.8rem' }}
+              className='button is-dark is-medium is-rounded is-fullwidth search-margin'
+              // style={{ marginBottom: '0.8rem', marginTop: '0.8rem' }}
             >
               <span className='icon-is-small'>
                 <i className='fas fa-search'>&nbsp;</i>
@@ -56,20 +45,13 @@ const Search = ({ setAlert }) => {
               Search
             </button>
           </div>
-
-          {/* </form> */}
+          {/* Clear Button -- Will only appear once a search has been attempted. */}
           {githubContexts.users.length > 0 && (
-            // <button
-            //   className='btn btn-light btn-block'
-            //   onClick={githubContexts.clearUsers}
-            // >
-            //   Clear
-            // </button>
             <div className='control'>
               <button
-                className='button is-danger is-medium is-rounded is-fullwidth'
+                className='button is-danger is-medium is-rounded is-fullwidth clear-margin'
                 onClick={githubContexts.clearUsers}
-                style={{ marginBottom: '0.8rem' }}
+                // style={{ marginBottom: '0.8rem' }}
               >
                 <span className='icon-is-small'>
                   <i className='fas fa-eraser'>&nbsp;</i>
@@ -84,7 +66,6 @@ const Search = ({ setAlert }) => {
   );
 };
 Search.propTypes = {
-  // clearUsers: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 export default Search;

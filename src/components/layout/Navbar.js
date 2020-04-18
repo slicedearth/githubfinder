@@ -4,33 +4,21 @@ import PropTypes from 'prop-types';
 
 const Navbar = ({ icon, title }) => {
   return (
-    // <nav className='navbar bg-primary'>
-    //   {/* eslint-disable-next-line */}
-    //   <Link to='/'>
-    //     <h1>
-    //       <i className={icon}></i>&nbsp;{title}
-    //     </h1>
-    //   </Link>
-    //   <ul>
-    //     <li>
-    //       <Link to='/'>Home</Link>
-    //     </li>
-    //     <li>
-    //       <Link to='/about'>About</Link>
-    //     </li>
-    //   </ul>
-    // </nav>
+    // Navbar
     <nav
-      className='navbar is-dark is-spaced'
+      className='navbar is-dark is-spaced no-highlight'
+      style={{ userSelect: 'none' }}
       role='navigation'
       aria-label='main navigation'
     >
+      {/* Navbar Brand */}
       <div className='navbar-brand'>
         <Link className='navbar-item' to='/'>
           <h1 className='is-size-3'>
             <i className={icon}></i>&nbsp;{title}
           </h1>
         </Link>
+        {/* Hamburger Menu For Tablet/Mobile */}
         {
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a
@@ -38,7 +26,7 @@ const Navbar = ({ icon, title }) => {
             className='navbar-burger burger'
             aria-label='menu'
             aria-expanded='false'
-            data-target='navbarBasicExample'
+            data-target='gfNavbar'
           >
             <span aria-hidden='true'></span>
             <span aria-hidden='true'></span>
@@ -46,18 +34,18 @@ const Navbar = ({ icon, title }) => {
           </a>
         }
       </div>
-
-      <div id='navbarBasicExample' className='navbar-menu navbar-end'>
+      {/* Home Link */}
+      <div id='gfNavbar' className='navbar-menu navbar-end'>
         <Link
           to='/'
-          className='navbar-item has-text-centered-touch is-size-4-touch is-size-5-desktop'
+          className='navbar-item has-text-centered-touch is-size-5-touch is-size-5-desktop'
         >
           Home
         </Link>
-
+        {/* About Link */}
         <Link
-          to='About'
-          className='navbar-item has-text-centered-touch is-size-4-touch is-size-5-desktop'
+          to='/About'
+          className='navbar-item has-text-centered-touch is-size-5-touch is-size-5-desktop'
         >
           About
         </Link>

@@ -1,24 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+// Individual User Cards That Appear As Search Results
 const UserItem = ({ user: { login, avatar_url, html_url } }) => {
-  //   constructor() {
-  //     super();
-  //     this.state = {
-  //       login: 'mojombo',
-  //       id: 1,
-  //       node_id: 'MDQ6VXNlcjE=',
-  //       avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4',
-  //       html_url: 'https://github.com/mojombo'
-  //     };
-  //   }
-  //   state = {
-  //     login: 'mojombo',
-  //     id: 1,
-  //     node_id: 'MDQ6VXNlcjE=',
-  //     avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4',
-  //     html_url: 'https://github.com/mojombo'
-  //   };
   return (
     <div className='card has-text-centered'>
       <figure className='container image is-96x96'>
@@ -28,10 +13,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
       <p className='is-size-5'>{login}</p>
       <div>
         <Link to={`/users/${login}`}>
-          <button
-            className='button is-dark is-small is-rounded'
-            style={{ marginBottom: '0.5rem', marginTop: '0.5rem' }}
-          >
+          <button className='button is-dark is-small is-rounded info-margin'>
             More Info
           </button>
         </Link>

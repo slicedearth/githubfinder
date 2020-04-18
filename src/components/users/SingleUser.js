@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import githubContext from '../../context/github/GitHubContext';
 
+// Single User Profile That Lists Information About The User
 const SingleUser = ({ match }) => {
   const githubContexts = useContext(githubContext);
   const { userDetails, getUser } = githubContexts;
@@ -29,11 +30,11 @@ const SingleUser = ({ match }) => {
   } = userDetails;
   return (
     <Fragment>
-      <div className='section section-padding'>
+      <div className=''>
         {/* First Row */}
         <Link
           to='/'
-          className='button is-medium is-fullwidth is-link is-rounded'
+          className='button is-medium is-fullwidth is-link is-rounded back-margin'
         >
           <i className='fas fa-arrow-circle-left fa-lg'></i>
           &nbsp;Back To Search
@@ -42,7 +43,7 @@ const SingleUser = ({ match }) => {
 
       {/* Second Row */}
       <div className='card'>
-        <p className='is-size-5'>
+        <p className='is-size-4'>
           <strong>&nbsp;Hireable:&nbsp;</strong>
           {hireable ? (
             <i className='fas fa-check-circle has-text-success'></i>
@@ -52,19 +53,23 @@ const SingleUser = ({ match }) => {
         </p>
         <div className='columns'>
           {/* First Column */}
-          <div className=' column section section-padding level'>
+          <div className=' column section section-padding level content-margin'>
             <div className='level-item'>
+              {/* Profile Image */}
               <figure className='image is-128x128'>
                 <img src={avatar_url} alt='Profile' className='is-rounded' />
               </figure>
             </div>
+            {/* Profile Name */}
             <p className='is-size-2 level-item'>{login}</p>
             <ul>
-              <li className='level-item'>
+              {/* Name */}
+              <li className='is-size-4 level-item'>
                 <strong>{name}</strong>
               </li>
+              {/* Location */}
               {location && (
-                <li className='level-item'>
+                <li className=' is-size-4 level-item'>
                   <strong>
                     <i className='fas fa-map-marker-alt'></i> {location}
                   </strong>
@@ -73,106 +78,114 @@ const SingleUser = ({ match }) => {
             </ul>
           </div>
           {/* Second Column */}
-          <div className='column section section-padding level'>
-            <ul className='py-2'>
-              {/* BIO */}
+          <div className='column section section-padding level content-margin'>
+            <ul>
+              {/* Bio */}
               {bio ? (
-                <li>
+                <li className='is-size-5'>
                   <strong>Bio:&nbsp;</strong>
                   {bio}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5'>
                   <strong>Bio:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'></i> Not
                   Provided
                 </li>
               )}
-              {/* COMPANY */}
+              {/* Company */}
               {company ? (
-                <li>
+                <li className='is-size-5'>
                   <strong>Company:&nbsp;</strong> {company}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5'>
                   <strong>Company:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* JOINED */}
+              {/* Year Created */}
               {created_at ? (
-                <li>
+                <li className='is-size-5'>
                   <strong>Account Created:</strong> {created_at.substring(0, 4)}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5'>
                   <strong>Account Created:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* SITE */}
+              {/* Website */}
               {blog ? (
-                <li>
+                <li className='is-size-5'>
                   <strong>Site:</strong> {blog}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5'>
                   <strong>Site:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* EMAIL */}
+              {/* Email */}
               {email ? (
-                <li>
+                <li className='is-size-5'>
                   <strong>Email:</strong> {email}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5'>
                   <strong>Email:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
             </ul>
-            <div
-              className=' field is-grouped is-grouped-multiline level-item'
-              style={{ marginTop: '2rem', marginBottom: '0.5rem' }}
-            >
+            {/* Tags */}
+            <div className=' field is-grouped is-grouped-multiline level-item tags-margin'>
+              {/* Followers */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark'>Followers</div>
-                  <div className='tag is-primary is-rounded'>{followers}</div>
+                  <div className='tag is-dark is-size-6'>Followers</div>
+                  <div className='tag is-primary is-rounded is-size-6'>
+                    {followers}
+                  </div>
                 </div>
               </div>
+              {/* Following */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark'>Following</div>
-                  <div className='tag is-warning is-rounded'>{following}</div>
+                  <div className='tag is-dark is-size-6'>Following</div>
+                  <div className='tag is-warning is-rounded is-size-6'>
+                    {following}
+                  </div>
                 </div>
               </div>
+              {/* Public Repositories */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark'>Public Repos</div>
-                  <div className='tag is-success is-rounded'>
+                  <div className='tag is-dark is-size-6'>Public Repos</div>
+                  <div className='tag is-success is-rounded is-size-6'>
                     {public_repos}
                   </div>
                 </div>
               </div>
+              {/* Public Gists */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark'>Public Gists</div>
-                  <div className='tag is-info is-rounded'>{public_gists}</div>
+                  <div className='tag is-dark is-size-6'>Public Gists</div>
+                  <div className='tag is-info is-rounded is-size-6'>
+                    {public_gists}
+                  </div>
                 </div>
               </div>
             </div>
-            {/* GITHUB BUTTON */}
+            {/* GitHub Button */}
             {html_url ? (
               <a
                 href={html_url}
-                className='button is-medium is-dark is-rounded'
+                className='button is-medium is-dark is-rounded is-size-4-desktop is-size-5-touch content-margin'
                 rel='noopener noreferrer'
                 target='_blank'
               >
