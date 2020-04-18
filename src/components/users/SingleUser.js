@@ -29,121 +29,158 @@ const SingleUser = ({ match }) => {
   } = userDetails;
   return (
     <Fragment>
-      {/* First Row */}
-      <Link to='/' className='btn btn-light'>
-        Back To Search
-      </Link>
-      Hireable:{' '}
-      {hireable ? (
-        <i className='fas fa-check text-success'></i>
-      ) : (
-        <i className='fas fa-times-circle text-danger'></i>
-      )}
-      {/* Second Row */}
-      <div className='card grid-2'>
-        {/* First Column */}
-        <div className='all-center'>
-          <img
-            src={avatar_url}
-            alt='Profile'
-            className='round-img'
-            style={{ width: '150px' }}
-          />
-          <h1>{login}</h1>
-          <ul>
-            <li>
-              <strong>{name}</strong>
-            </li>
-            {location && (
-              <li>
-                <strong>
-                  <i className='fas fa-map-marker-alt'></i> {location}
-                </strong>
-              </li>
-            )}
-          </ul>
-        </div>
-        {/* Second Column */}
-        <div style={{ marginLeft: '6rem' }}>
-          <ul className='py-2'>
-            {/* BIO */}
-            {bio ? (
-              <li>
-                <strong>Bio:</strong> {bio}
-              </li>
-            ) : (
-              <li>
-                <strong>Bio:</strong>{' '}
-                <i className='fas fa-times-circle text-danger'></i> Not Provided
-              </li>
-            )}
-            {/* COMPANY */}
-            {company ? (
-              <li>
-                <strong>Company:</strong> {company}
-              </li>
-            ) : (
-              <li>
-                <strong>Company:</strong>{' '}
-                <i className='fas fa-times-circle text-danger'> </i> Not
-                Provided
-              </li>
-            )}
-            {/* JOINED */}
-            {created_at ? (
-              <li>
-                <strong>Account Created:</strong> {created_at.substring(0, 4)}
-              </li>
-            ) : (
-              <li>
-                <strong>Account Created:</strong>{' '}
-                <i className='fas fa-times-circle text-danger'> </i> Not
-                Provided
-              </li>
-            )}
-            {/* SITE */}
-            {blog ? (
-              <li>
-                <strong>Site:</strong> {blog}
-              </li>
-            ) : (
-              <li>
-                <strong>Site:</strong>{' '}
-                <i className='fas fa-times-circle text-danger'> </i> Not
-                Provided
-              </li>
-            )}
-            {/* EMAIL */}
-            {email ? (
-              <li>
-                <strong>Email:</strong> {email}
-              </li>
-            ) : (
-              <li>
-                <strong>Email:</strong>{' '}
-                <i className='fas fa-times-circle text-danger'> </i> Not
-                Provided
-              </li>
-            )}
-          </ul>
+      <div className='section section-padding'>
+        {/* First Row */}
+        <Link
+          to='/'
+          className='button is-medium is-fullwidth is-link is-rounded'
+        >
+          <i className='fas fa-arrow-circle-left fa-lg'></i>
+          &nbsp;Back To Search
+        </Link>
+      </div>
 
-          {/* GITHUB BUTTON */}
-          {html_url ? (
-            <a
-              href={html_url}
-              className='btn btn-dark'
-              rel='noopener noreferrer'
-              target='_blank'
+      {/* Second Row */}
+      <div className='card'>
+        <p className='is-size-5'>
+          <strong>&nbsp;Hireable:&nbsp;</strong>
+          {hireable ? (
+            <i className='fas fa-check-circle has-text-success'></i>
+          ) : (
+            <i className='fas fa-times-circle has-text-danger'></i>
+          )}
+        </p>
+        <div className='columns'>
+          {/* First Column */}
+          <div className=' column section section-padding level'>
+            <div className='level-item'>
+              <figure className='image is-128x128'>
+                <img src={avatar_url} alt='Profile' className='is-rounded' />
+              </figure>
+            </div>
+            <p className='is-size-2 level-item'>{login}</p>
+            <ul>
+              <li className='level-item'>
+                <strong>{name}</strong>
+              </li>
+              {location && (
+                <li className='level-item'>
+                  <strong>
+                    <i className='fas fa-map-marker-alt'></i> {location}
+                  </strong>
+                </li>
+              )}
+            </ul>
+          </div>
+          {/* Second Column */}
+          <div className='column section section-padding level'>
+            <ul className='py-2'>
+              {/* BIO */}
+              {bio ? (
+                <li>
+                  <strong>Bio:&nbsp;</strong>
+                  {bio}
+                </li>
+              ) : (
+                <li>
+                  <strong>Bio:</strong>{' '}
+                  <i className='fas fa-times-circle has-text-danger'></i> Not
+                  Provided
+                </li>
+              )}
+              {/* COMPANY */}
+              {company ? (
+                <li>
+                  <strong>Company:&nbsp;</strong> {company}
+                </li>
+              ) : (
+                <li>
+                  <strong>Company:</strong>{' '}
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
+                  Provided
+                </li>
+              )}
+              {/* JOINED */}
+              {created_at ? (
+                <li>
+                  <strong>Account Created:</strong> {created_at.substring(0, 4)}
+                </li>
+              ) : (
+                <li>
+                  <strong>Account Created:</strong>{' '}
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
+                  Provided
+                </li>
+              )}
+              {/* SITE */}
+              {blog ? (
+                <li>
+                  <strong>Site:</strong> {blog}
+                </li>
+              ) : (
+                <li>
+                  <strong>Site:</strong>{' '}
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
+                  Provided
+                </li>
+              )}
+              {/* EMAIL */}
+              {email ? (
+                <li>
+                  <strong>Email:</strong> {email}
+                </li>
+              ) : (
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
+                  Provided
+                </li>
+              )}
+            </ul>
+            <div
+              className=' field is-grouped is-grouped-multiline level-item'
+              style={{ marginTop: '2rem', marginBottom: '0.5rem' }}
             >
-              Github Page
-            </a>
-          ) : null}
-        </div>
-        <div className=''>
-          <div className='badge badge-primary'>Followers: {followers}</div>
-          <div className='badge badge-success'>Following: {following}</div>
-          <div className='badge badge-light'>Public Repos: {public_repos}</div>
-          <div className='badge badge-dark'>Public Gists: {public_gists}</div>
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark'>Followers</div>
+                  <div className='tag is-primary is-rounded'>{followers}</div>
+                </div>
+              </div>
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark'>Following</div>
+                  <div className='tag is-warning is-rounded'>{following}</div>
+                </div>
+              </div>
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark'>Public Repos</div>
+                  <div className='tag is-success is-rounded'>
+                    {public_repos}
+                  </div>
+                </div>
+              </div>
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark'>Public Gists</div>
+                  <div className='tag is-info is-rounded'>{public_gists}</div>
+                </div>
+              </div>
+            </div>
+            {/* GITHUB BUTTON */}
+            {html_url ? (
+              <a
+                href={html_url}
+                className='button is-medium is-dark is-rounded'
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <i className='fab fa-github'></i>
+                &nbsp;Go To GitHub Page
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </Fragment>

@@ -24,7 +24,7 @@ const Search = ({ setAlert }) => {
         <div className='field'>
           <div className='control'>
             <input
-              class='input is-rounded'
+              className='input is-rounded'
               type='text'
               name='text'
               placeholder='Search Users...'
@@ -47,11 +47,11 @@ const Search = ({ setAlert }) => {
         /> */}
           <div className='control'>
             <button
-              class='button is-dark is-medium is-rounded is-fullwidth'
+              className='button is-dark is-medium is-rounded is-fullwidth'
               style={{ marginBottom: '0.8rem', marginTop: '0.8rem' }}
             >
-              <span class='icon-is-small'>
-                <i class='fas fa-search'>&nbsp;</i>
+              <span className='icon-is-small'>
+                <i className='fas fa-search'>&nbsp;</i>
               </span>
               Search
             </button>
@@ -67,12 +67,12 @@ const Search = ({ setAlert }) => {
             // </button>
             <div className='control'>
               <button
-                class='button is-danger is-medium is-rounded is-fullwidth'
+                className='button is-danger is-medium is-rounded is-fullwidth'
                 onClick={githubContexts.clearUsers}
                 style={{ marginBottom: '0.8rem' }}
               >
                 <span className='icon-is-small'>
-                  <i class='fas fa-eraser'>&nbsp;</i>
+                  <i className='fas fa-eraser'>&nbsp;</i>
                 </span>
                 Clear
               </button>

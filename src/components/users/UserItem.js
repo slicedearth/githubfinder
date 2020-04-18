@@ -21,7 +21,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   //   };
   return (
     <div className='card has-text-centered'>
-      <figure className='container image is-128x128'>
+      <figure className='container image is-96x96'>
         <img src={avatar_url} alt='' className='is-rounded' />
       </figure>
 
@@ -29,10 +29,10 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
       <div>
         <Link to={`/users/${login}`}>
           <button
-            class='button is-dark is-medium is-rounded'
+            className='button is-dark is-small is-rounded'
             style={{ marginBottom: '0.5rem', marginTop: '0.5rem' }}
           >
-            More
+            More Info
           </button>
         </Link>
       </div>
