@@ -38,14 +38,14 @@ const Navbar = ({ icon, title }) => {
       <div id='gfNavbar' className='navbar-menu navbar-end'>
         <Link
           to='/'
-          className='navbar-item has-text-centered-touch is-size-5-touch is-size-5-desktop'
+          className='navbar-item has-text-centered-touch is-size-6-mobile is-size-5'
         >
           Home
         </Link>
         {/* About Link */}
         <Link
           to='/About'
-          className='navbar-item has-text-centered-touch is-size-5-touch is-size-5-desktop'
+          className='navbar-item has-text-centered-touch is-size-6-mobile is-size-5'
         >
           About
         </Link>

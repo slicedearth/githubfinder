@@ -10,6 +10,7 @@ import About from './components/pages/About';
 import SingleUser from './components/users/SingleUser';
 import GitHubState from './context/github/GitHubState';
 const App = () => {
+  // State For SetAlert Function
   const [msg, setMsg] = useState('');
   const [type, setType] = useState('');
   // SetAlert Function

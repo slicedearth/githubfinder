@@ -3,7 +3,7 @@
   user-select: none;
 }
 /* Custom Padding For Application */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .section.is-narrow {
     padding: 3rem 12rem;
   }
@@ -35,10 +35,20 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-@media screen and (min-width: 768px) {
+.repo-style {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+@media screen and (min-width: 1200px) {
   .user-style {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .repo-style {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 }
@@ -53,4 +63,10 @@
 .tags-margin {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+}
+.repo-tags-margin {
+  margin: 0.5rem 0rem 1rem 1rem;
+}
+.repo-content {
+  padding: 0.5rem;
 }

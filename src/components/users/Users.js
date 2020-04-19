@@ -7,10 +7,12 @@ import githubContext from '../../context/github/GitHubContext';
 const Users = () => {
   const githubContexts = useContext(githubContext);
   const { users, loading } = githubContexts;
+  // If Data IS Still Loading, Shows Spinner
   if (loading) {
     return <Spinner />;
   } else {
     return (
+      // Loads User Data And Formats Data into multiple UserItems
       <div className='user-style'>
         {users.map((user) => (
           <UserItem key={user.id} user={user} />

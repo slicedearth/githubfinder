@@ -35,10 +35,7 @@ const Search = ({ setAlert }) => {
           </div>
           {/* Search Button */}
           <div className='control'>
-            <button
-              className='button is-dark is-medium is-rounded is-fullwidth search-margin'
-              // style={{ marginBottom: '0.8rem', marginTop: '0.8rem' }}
-            >
+            <button className='button is-dark is-medium is-size-5 is-size-6-mobile is-rounded is-fullwidth search-margin'>
               <span className='icon-is-small'>
                 <i className='fas fa-search'>&nbsp;</i>
               </span>
@@ -49,9 +46,8 @@ const Search = ({ setAlert }) => {
           {githubContexts.users.length > 0 && (
             <div className='control'>
               <button
-                className='button is-danger is-medium is-rounded is-fullwidth clear-margin'
+                className='button is-danger is-medium is-size-5 is-size-6-mobile is-rounded is-fullwidth clear-margin'
                 onClick={githubContexts.clearUsers}
-                // style={{ marginBottom: '0.8rem' }}
               >
                 <span className='icon-is-small'>
                   <i className='fas fa-eraser'>&nbsp;</i>

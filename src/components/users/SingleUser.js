@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Repos from '../repos/Repos';
 import githubContext from '../../context/github/GitHubContext';
 
 // Single User Profile That Lists Information About The User
 const SingleUser = ({ match }) => {
   const githubContexts = useContext(githubContext);
-  const { userDetails, getUser } = githubContexts;
+  const { userDetails, getUser, repos, getRepos } = githubContexts;
   useEffect(() => {
     getUser(match.params.login);
+    getRepos(match.params.login);
     console.log(match.params.login);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -32,18 +34,20 @@ const SingleUser = ({ match }) => {
     <Fragment>
       <div className=''>
         {/* First Row */}
+        {/* Back Button */}
         <Link
           to='/'
-          className='button is-medium is-fullwidth is-link is-rounded back-margin'
+          className='button is-medium is-fullwidth is-size-5 is-size-6-mobile is-link is-rounded back-margin'
         >
-          <i className='fas fa-arrow-circle-left fa-lg'></i>
+          <i className='fas fa-arrow-circle-left'></i>
           &nbsp;Back To Search
         </Link>
       </div>
 
       {/* Second Row */}
+      {/* Single User Card */}
       <div className='card'>
-        <p className='is-size-4'>
+        <p className='is-size-4 is-size-5-mobile'>
           <strong>&nbsp;Hireable:&nbsp;</strong>
           {hireable ? (
             <i className='fas fa-check-circle has-text-success'></i>
@@ -64,12 +68,12 @@ const SingleUser = ({ match }) => {
             <p className='is-size-2 level-item'>{login}</p>
             <ul>
               {/* Name */}
-              <li className='is-size-4 level-item'>
+              <li className='is-size-4 is-size-5-mobile level-item'>
                 <strong>{name}</strong>
               </li>
               {/* Location */}
               {location && (
-                <li className=' is-size-4 level-item'>
+                <li className=' is-size-4 is-size-5-mobile level-item'>
                   <strong>
                     <i className='fas fa-map-marker-alt'></i> {location}
                   </strong>
@@ -82,12 +86,12 @@ const SingleUser = ({ match }) => {
             <ul>
               {/* Bio */}
               {bio ? (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Bio:&nbsp;</strong>
                   {bio}
                 </li>
               ) : (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Bio:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'></i> Not
                   Provided
@@ -95,11 +99,11 @@ const SingleUser = ({ match }) => {
               )}
               {/* Company */}
               {company ? (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Company:&nbsp;</strong> {company}
                 </li>
               ) : (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Company:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
@@ -107,11 +111,11 @@ const SingleUser = ({ match }) => {
               )}
               {/* Year Created */}
               {created_at ? (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Account Created:</strong> {created_at.substring(0, 4)}
                 </li>
               ) : (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Account Created:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
@@ -119,11 +123,11 @@ const SingleUser = ({ match }) => {
               )}
               {/* Website */}
               {blog ? (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Site:</strong> {blog}
                 </li>
               ) : (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Site:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
@@ -131,11 +135,11 @@ const SingleUser = ({ match }) => {
               )}
               {/* Email */}
               {email ? (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Email:</strong> {email}
                 </li>
               ) : (
-                <li className='is-size-5'>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Email:</strong>{' '}
                   <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
@@ -147,8 +151,10 @@ const SingleUser = ({ match }) => {
               {/* Followers */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark is-size-6'>Followers</div>
-                  <div className='tag is-primary is-rounded is-size-6'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Followers
+                  </div>
+                  <div className='tag is-primary is-rounded is-size-6 is-size-7-mobile'>
                     {followers}
                   </div>
                 </div>
@@ -156,8 +162,10 @@ const SingleUser = ({ match }) => {
               {/* Following */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark is-size-6'>Following</div>
-                  <div className='tag is-warning is-rounded is-size-6'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Following
+                  </div>
+                  <div className='tag is-warning is-rounded is-size-6 is-size-7-mobile'>
                     {following}
                   </div>
                 </div>
@@ -165,8 +173,10 @@ const SingleUser = ({ match }) => {
               {/* Public Repositories */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark is-size-6'>Public Repos</div>
-                  <div className='tag is-success is-rounded is-size-6'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Public Repos
+                  </div>
+                  <div className='tag is-success is-rounded is-size-6 is-size-7-mobile'>
                     {public_repos}
                   </div>
                 </div>
@@ -174,8 +184,10 @@ const SingleUser = ({ match }) => {
               {/* Public Gists */}
               <div className='control'>
                 <div className='tags has-addons'>
-                  <div className='tag is-dark is-size-6'>Public Gists</div>
-                  <div className='tag is-info is-rounded is-size-6'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Public Gists
+                  </div>
+                  <div className='tag is-info is-rounded is-size-6 is-size-7-mobile'>
                     {public_gists}
                   </div>
                 </div>
@@ -185,7 +197,7 @@ const SingleUser = ({ match }) => {
             {html_url ? (
               <a
                 href={html_url}
-                className='button is-medium is-dark is-rounded is-size-4-desktop is-size-5-touch content-margin'
+                className='button is-medium is-dark is-rounded is-size-5 is-size-6-mobile content-margin level-item'
                 rel='noopener noreferrer'
                 target='_blank'
               >
@@ -194,6 +206,10 @@ const SingleUser = ({ match }) => {
               </a>
             ) : null}
           </div>
+        </div>
+        {/* Repository Grid */}
+        <div className=''>
+          <Repos repos={repos} />
         </div>
       </div>
     </Fragment>
