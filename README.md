@@ -1,3 +1,11 @@
+# reactbasics
+
+2020 Semester 1 Client Side Assessment
+
+## Description
+
+An application that uses the GitHub API to search for users and display basic information about them. It is built using React and Bulma.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

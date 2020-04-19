@@ -1,7 +1,12 @@
 // eslint-disable-next-line
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
+// Custom CSS File
+import './custom.css';
+// Bulma CSS
+import 'bulma/css/bulma.css';
+// Custom Javascript File
+import './custom.js';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import axios from 'axios';
@@ -10,43 +15,44 @@ import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import SingleUser from './components/users/SingleUser';
 class App extends Component {
+  // Create Initial State
   state = {
     users: [],
     loading: false,
     msg: '',
     type: '',
-    userDetails: {}
+    userDetails: {},
   };
-  // async componentDidMount() {
-  //   this.setState({ loading: true });
-  //   const res = await axios.get(
-  //     `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-  //   );
-  //   this.setState({ users: res.data, loading: false });
-  //   console.log(res.data);
-  // }
-
-  // Search Users
-  searchUsers = async text => {
+  // Search Users Function
+  searchUsers = async (text) => {
     console.log(text);
     this.setState({ loading: true });
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+      `https://api.github.com/search/users?q=${text}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,
+        },
+      }
     );
     this.setState({ users: res.data.items, loading: false });
   };
 
-  // Get Single User
-  getUser = async username => {
+  // Get Single User Function
+  getUser = async (username) => {
     this.setState({ loading: true });
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
+    const res = await axios.get(`https://api.github.com/users/${username}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,
+      },
+    });
     this.setState({ userDetails: res.data, loading: false });
   };
+  // Clear Users Function
   clearUsers = () => {
     this.setState({ users: [], loading: false });
   };
+  // Set Alert Function
   setAlert = (searchMsg, searchType) => {
     this.setState({ msg: searchMsg, type: searchType });
     setTimeout(() => this.setState({ msg: '', type: '' }), 3000);
@@ -57,14 +63,14 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <div className='container'>
+          <div className='section is-narrow'>
             <Alert msg={this.state.msg} type={this.state.type} />
             <Switch>
               {/* First Route */}
               <Route
                 exact
                 path='/'
-                render={props => (
+                render={(props) => (
                   <Fragment>
                     <Search
                       searchUsers={this.searchUsers}
@@ -82,7 +88,7 @@ class App extends Component {
               <Route
                 exact
                 path='/users/:login'
-                render={props => (
+                render={(props) => (
                   <SingleUser
                     {...props}
                     getUser={this.getUser}

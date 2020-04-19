@@ -20,128 +20,175 @@ class SingleUser extends Component {
       public_repos,
       public_gists,
       following,
-      followers
+      followers,
     } = this.props.userDetails;
     return (
       <Fragment>
         {/* First Row */}
-        <Link to='/' className='btn btn-light'>
-          Back To Search
-        </Link>
-        Hireable:{' '}
-        {hireable ? (
-          <i className='fas fa-check text-success'></i>
-        ) : (
-          <i className='fas fa-times-circle text-danger'></i>
-        )}
+        <div>
+          {/* First Row */}
+          <Link
+            to='/'
+            className='button is-medium is-fullwidth is-link is-rounded back-margin'
+          >
+            <i className='fas fa-arrow-circle-left fa-lg'></i>
+            &nbsp;Back To Search
+          </Link>
+        </div>
         {/* Second Row */}
-        <div className='card grid-2'>
-          {/* First Column */}
-          <div className='all-center'>
-            <img
-              src={avatar_url}
-              alt='Profile'
-              className='round-img'
-              style={{ width: '150px' }}
-            />
-            <h1>{login}</h1>
-            <ul>
-              <li>
-                <strong>{name}</strong>
-              </li>
-              {location && (
-                <li>
-                  <strong>
-                    <i className='fas fa-map-marker-alt'></i> {location}
-                  </strong>
+        <div className='card'>
+          <p className='is-size-4'>
+            <strong>&nbsp;Hireable:&nbsp;</strong>
+            {hireable ? (
+              <i className='fas fa-check-circle has-text-success'></i>
+            ) : (
+              <i className='fas fa-times-circle has-text-danger'></i>
+            )}
+          </p>
+          <div className='columns'>
+            {/* First Column */}
+            <div className=' column section section-padding level content-margin'>
+              <div className='level-item'>
+                {/* Profile Image */}
+                <figure className='image is-128x128'>
+                  <img src={avatar_url} alt='Profile' className='is-rounded' />
+                </figure>
+              </div>
+              {/* Profile Name */}
+              <p className='is-size-2 level-item'>{login}</p>
+              <ul>
+                {/* Name */}
+                <li className='is-size-4 level-item'>
+                  <strong>{name}</strong>
                 </li>
-              )}
-            </ul>
-          </div>
-          {/* Second Column */}
-          <div style={{ marginLeft: '6rem' }}>
-            <ul className='py-2'>
-              {/* BIO */}
-              {bio ? (
-                <li>
-                  <strong>Bio:</strong> {bio}
-                </li>
-              ) : (
-                <li>
-                  <strong>Bio:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'></i> Not
-                  Provided
-                </li>
-              )}
-              {/* COMPANY */}
-              {company ? (
-                <li>
-                  <strong>Company:</strong> {company}
-                </li>
-              ) : (
-                <li>
-                  <strong>Company:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
-                  Provided
-                </li>
-              )}
-              {/* JOINED */}
-              {created_at ? (
-                <li>
-                  <strong>Account Created:</strong> {created_at.substring(0, 4)}
-                </li>
-              ) : (
-                <li>
-                  <strong>Account Created:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
-                  Provided
-                </li>
-              )}
-              {/* SITE */}
-              {blog ? (
-                <li>
-                  <strong>Site:</strong> {blog}
-                </li>
-              ) : (
-                <li>
-                  <strong>Site:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
-                  Provided
-                </li>
-              )}
-              {/* EMAIL */}
-              {email ? (
-                <li>
-                  <strong>Email:</strong> {email}
-                </li>
-              ) : (
-                <li>
-                  <strong>Email:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
-                  Provided
-                </li>
-              )}
-            </ul>
-
-            {/* GITHUB BUTTON */}
-            {html_url ? (
-              <a
-                href={html_url}
-                className='btn btn-dark'
-                rel='noopener noreferrer'
-                target='_blank'
-              >
-                Github Page
-              </a>
-            ) : null}
-          </div>
-          <div className=''>
-            <div className='badge badge-primary'>Followers: {followers}</div>
-            <div className='badge badge-success'>Following: {following}</div>
-            <div className='badge badge-light'>
-              Public Repos: {public_repos}
+                {/* Location */}
+                {location && (
+                  <li className=' is-size-4 level-item'>
+                    <strong>
+                      <i className='fas fa-map-marker-alt'></i> {location}
+                    </strong>
+                  </li>
+                )}
+              </ul>
             </div>
-            <div className='badge badge-dark'>Public Gists: {public_gists}</div>
+            {/* Second Column */}
+            <div className='column section section-padding level content-margin'>
+              <ul>
+                {/* Bio */}
+                {bio ? (
+                  <li className='is-size-5'>
+                    <strong>Bio:&nbsp;</strong>
+                    {bio}
+                  </li>
+                ) : (
+                  <li className='is-size-5'>
+                    <strong>Bio:</strong>{' '}
+                    <i className='fas fa-times-circle has-text-danger'></i> Not
+                    Provided
+                  </li>
+                )}
+                {/* Company */}
+                {company ? (
+                  <li className='is-size-5'>
+                    <strong>Company:&nbsp;</strong> {company}
+                  </li>
+                ) : (
+                  <li className='is-size-5'>
+                    <strong>Company:</strong>{' '}
+                    <i className='fas fa-times-circle has-text-danger'> </i> Not
+                    Provided
+                  </li>
+                )}
+                {/* Year Created */}
+                {created_at ? (
+                  <li className='is-size-5'>
+                    <strong>Account Created:</strong>{' '}
+                    {created_at.substring(0, 4)}
+                  </li>
+                ) : (
+                  <li className='is-size-5'>
+                    <strong>Account Created:</strong>{' '}
+                    <i className='fas fa-times-circle has-text-danger'> </i> Not
+                    Provided
+                  </li>
+                )}
+                {/* Website */}
+                {blog ? (
+                  <li className='is-size-5'>
+                    <strong>Site:</strong> {blog}
+                  </li>
+                ) : (
+                  <li className='is-size-5'>
+                    <strong>Site:</strong>{' '}
+                    <i className='fas fa-times-circle has-text-danger'> </i> Not
+                    Provided
+                  </li>
+                )}
+                {/* Email */}
+                {email ? (
+                  <li className='is-size-5'>
+                    <strong>Email:</strong> {email}
+                  </li>
+                ) : (
+                  <li className='is-size-5'>
+                    <strong>Email:</strong>{' '}
+                    <i className='fas fa-times-circle has-text-danger'> </i> Not
+                    Provided
+                  </li>
+                )}
+              </ul>
+              {/* Tags */}
+              <div className=' field is-grouped is-grouped-multiline level-item tags-margin'>
+                {/* Followers */}
+                <div className='control'>
+                  <div className='tags has-addons'>
+                    <div className='tag is-dark is-size-6'>Followers</div>
+                    <div className='tag is-primary is-rounded is-size-6'>
+                      {followers}
+                    </div>
+                  </div>
+                </div>
+                {/* Following */}
+                <div className='control'>
+                  <div className='tags has-addons'>
+                    <div className='tag is-dark is-size-6'>Following</div>
+                    <div className='tag is-warning is-rounded is-size-6'>
+                      {following}
+                    </div>
+                  </div>
+                </div>
+                {/* Public Repositories */}
+                <div className='control'>
+                  <div className='tags has-addons'>
+                    <div className='tag is-dark is-size-6'>Public Repos</div>
+                    <div className='tag is-success is-rounded is-size-6'>
+                      {public_repos}
+                    </div>
+                  </div>
+                </div>
+                {/* Public Gists */}
+                <div className='control'>
+                  <div className='tags has-addons'>
+                    <div className='tag is-dark is-size-6'>Public Gists</div>
+                    <div className='tag is-info is-rounded is-size-6'>
+                      {public_gists}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* GitHub Button */}
+              {html_url ? (
+                <a
+                  href={html_url}
+                  className='button is-medium is-dark is-rounded is-size-4-desktop is-size-5-touch content-margin'
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  <i className='fab fa-github'></i>
+                  &nbsp;Go To GitHub Page
+                </a>
+              ) : null}
+            </div>
           </div>
         </div>
       </Fragment>

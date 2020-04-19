@@ -1,0 +1,84 @@
+/* Disables Highlighting Of Text In The Navbar */
+.no-highlight {
+  user-select: none;
+}
+/* Custom Padding For Application */
+@media screen and (min-width: 1024px) {
+  .section.is-narrow {
+    padding: 3rem 12rem;
+  }
+}
+/* Spinner Styling */
+.spin-img {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+/* Button Margins */
+.search-margin {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.clear-margin {
+  margin-bottom: 0.8rem;
+}
+.info-margin {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.back-margin {
+  margin-bottom: 0.8rem;
+}
+/* Styling For User Grid */
+.user-style {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .user-style {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+.card-padding {
+  padding: auto;
+}
+/* Margin for Single User Card Content */
+.content-margin {
+  margin: auto;
+}
+/* Tags Group Margin */
+.tags-margin {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+/* Alert Styling */
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
