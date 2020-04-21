@@ -7,7 +7,9 @@ const RepoItem = ({ repo }) => {
     <div className='card has-text-centered repo-content'>
       {/* Repo Name/Link */}
       <p className='is-size-4 is-size-5-mobile is-link has-text-weight-semibold '>
-        <a href='repo.html_url'>{repo.name}</a>
+        <a href={repo.html_url} rel='noopener noreferrer' target='_blank'>
+          {repo.name}
+        </a>
       </p>
       {/* Description */}
       <p className='is-size-5 is-size-6-mobile repo-text'>{repo.description}</p>
