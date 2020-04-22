@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+// Search Component -- Allows Users To Search For GitHub Profiles
 class Search extends Component {
+  // Sets The Initial State
   state = {
     text: '',
   };
+  // PropTypes Declaration
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
     setAlert: PropTypes.func.isRequired,
   };
+  // Sets The State When Data Is Entered
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  // Searches For Users If The Search Field Isn't Empty. If The Search Field Is Empty It Will Display An Alert Instead
   onSubmit = (e) => {
     e.preventDefault();
     if (this.state.text === '') {
       this.props.setAlert('Please enter something.', 'light');
     } else {
-      console.log(this.state.text);
       this.props.searchUsers(this.state.text);
     }
   };

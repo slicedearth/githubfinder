@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// User Item Component -- Places Content From The GitHub Profile Inside Of A Card
 const UserItem = ({ user: { login, avatar_url } }) => {
   return (
     <div className='card has-text-centered'>

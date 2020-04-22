@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+// Single User Component -- Displays Details From The GitHub Profile
 class SingleUser extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
@@ -26,7 +27,6 @@ class SingleUser extends Component {
       <Fragment>
         {/* First Row */}
         <div>
-          {/* First Row */}
           <Link
             to='/'
             className='button is-medium is-fullwidth is-link is-rounded back-margin'
@@ -195,5 +195,4 @@ class SingleUser extends Component {
     );
   }
 }
-
 export default SingleUser;

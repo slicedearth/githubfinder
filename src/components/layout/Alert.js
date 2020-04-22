@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Alert Component -- Displays An Alert
 class Alert extends Component {
   render() {
     const { msg, type } = this.props;
