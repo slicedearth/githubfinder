@@ -7,7 +7,7 @@ import githubContext from '../../context/github/GitHubContext';
 const Users = () => {
   const githubContexts = useContext(githubContext);
   const { users, loading } = githubContexts;
-  // If Data IS Still Loading, Shows Spinner
+  // If Data Is Still Loading, Shows Spinner
   if (loading) {
     return <Spinner />;
   } else {

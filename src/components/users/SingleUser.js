@@ -32,8 +32,8 @@ const SingleUser = ({ match }) => {
   } = userDetails;
   return (
     <Fragment>
-      <div className=''>
-        {/* First Row */}
+      {/* First Row */}
+      <div>
         {/* Back Button */}
         <Link
           to='/'

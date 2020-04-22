@@ -37,7 +37,7 @@ const GitHubState = (props) => {
   // Search Users Function
   const searchUsers = async (text) => {
     setLoading();
-    // Axios Request To Fetch Data
+    // Axios Request To Fetch Data From The GitHub API Based On The Search Input
     const res = await axios.get(
       `https://api.github.com/search/users?q=${text}`,
       config
@@ -48,7 +48,7 @@ const GitHubState = (props) => {
   // Get Single User Function
   const getUser = async (username) => {
     setLoading();
-    // Axios Request To Fetch Data
+    // Axios Request To Fetch Profile Data From A Single GitHub Profile Using The GitHub API
     const res = await axios.get(
       `https://api.github.com/users/${username}`,
       config
@@ -59,6 +59,7 @@ const GitHubState = (props) => {
   // Get Repos Function
   const getRepos = async (username) => {
     setLoading();
+    // Axios Request To Fetch Repository Data From A Single GitHub Profile Using The GitHub API
     const res = await axios.get(
       `https://api.github.com/users/${username}/repos?per_page=10&sort=created:as`,
       config
