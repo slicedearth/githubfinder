@@ -12,9 +12,12 @@ const About = () => {
             the GitHub API.
           </p>
           <p className='has-text-centered is-size-4'>
-            It was built using React, Bulma and Axios as part of an advanced
-            assessment task for my diploma. This version of the project uses
-            React Hooks.
+            It was built using React, Bulma and Axios as part of an assessment
+            task for my diploma.
+          </p>
+          <p className='has-text-centered is-size-4'>
+            This version of the project uses React Hooks and has added recent
+            repositories to the user profiles.
           </p>
         </div>
       </div>
