@@ -2,18 +2,21 @@
 .no-highlight {
   user-select: none;
 }
+
 /* Custom Padding For Application */
 @media screen and (min-width: 1200px) {
   .section.is-narrow {
     padding: 3rem 12rem;
   }
 }
+
 /* Spinner Styling */
 .spin-img {
   width: 200px;
   margin: auto;
   display: block;
 }
+
 /* Button Margins */
 .search-margin {
   margin-top: 0.8rem;
@@ -29,17 +32,47 @@
 .back-margin {
   margin-bottom: 0.8rem;
 }
+
+/* Alert Styling */
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: #00d1b2;
+  color: #333;
+}
+.alert-light {
+  background: #f4f4f4;
+  color: #333;
+}
+.alert-dark {
+  background: #333333;
+  color: #fff;
+}
+.alert-danger {
+  background: #dc3545;
+  color: #fff;
+}
+.alert-success {
+  background: #28a745;
+  color: #fff;
+}
+
 /* Styling For User Grid */
 .user-style {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+/* Styling For Repository Grid */
 .repo-style {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
 }
+
+/* Responsive Media Queries For User Grid */
 @media screen and (min-width: 1200px) {
   .user-style {
     display: grid;
@@ -52,21 +85,28 @@
     gap: 1rem;
   }
 }
+
+/* Padding For Cards */
 .card-padding {
   padding: auto;
 }
+
 /* Margin for Single User Card Content */
 .content-margin {
   margin: auto;
 }
+
 /* Tags Group Margin */
 .tags-margin {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
+
 .repo-tags-margin {
   margin: 0.5rem 0rem 1rem 1rem;
 }
+
+/* Padding For Repos */
 .repo-content {
   padding: 0.5rem;
 }
