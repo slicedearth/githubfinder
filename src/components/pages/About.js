@@ -1,11 +1,23 @@
 import React, { Fragment } from 'react';
-
+// About Page
 const About = () => {
   return (
     <Fragment>
-      <h1>About</h1>
-      <p>This is an app to search for GitHub users.</p>
-      <p>Version 1.0</p>
+      <div className='section section-padding'>
+        <h1 className='is-size-2 has-text-centered'>About GitHub Finder</h1>
+        <div className='section section-padding'>
+          {' '}
+          <p className='has-text-centered is-size-4'>
+            This is an app that was created to search for GitHub profiles using
+            the GitHub API.
+          </p>
+          <p className='has-text-centered is-size-4'>
+            It was built using React, Bulma and Axios as part of an advanced
+            assessment task for my diploma. This version of the project uses
+            React Hooks.
+          </p>
+        </div>
+      </div>
     </Fragment>
   );
 };
