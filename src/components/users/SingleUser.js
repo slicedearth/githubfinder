@@ -1,56 +1,79 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-class SingleUser extends Component {
-  componentDidMount() {
-    this.props.getUser(this.props.match.params.login);
-  }
-  render() {
-    const {
-      avatar_url,
-      login,
-      hireable,
-      name,
-      location,
-      bio,
-      blog,
-      html_url,
-      email,
-      company,
-      created_at,
-      public_repos,
-      public_gists,
-      following,
-      followers
-    } = this.props.userDetails;
-    return (
-      <Fragment>
-        {/* First Row */}
-        <Link to='/' className='btn btn-light'>
-          Back To Search
+import Repos from '../repos/Repos';
+import githubContext from '../../context/github/GitHubContext';
+
+// Single User Profile That Lists Information About The User
+const SingleUser = ({ match }) => {
+  const githubContexts = useContext(githubContext);
+  const { userDetails, getUser, repos, getRepos } = githubContexts;
+  useEffect(() => {
+    getUser(match.params.login);
+    getRepos(match.params.login);
+    console.log(match.params.login);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const {
+    avatar_url,
+    login,
+    hireable,
+    name,
+    location,
+    bio,
+    blog,
+    html_url,
+    email,
+    company,
+    created_at,
+    public_repos,
+    public_gists,
+    following,
+    followers,
+  } = userDetails;
+  return (
+    <Fragment>
+      {/* First Row */}
+      <div>
+        {/* Back Button */}
+        <Link
+          to='/'
+          className='button is-medium is-fullwidth is-size-5 is-size-6-mobile is-link is-rounded back-margin'
+        >
+          <i className='fas fa-arrow-circle-left'></i>
+          &nbsp;Back To Search
         </Link>
-        Hireable:{' '}
-        {hireable ? (
-          <i className='fas fa-check text-success'></i>
-        ) : (
-          <i className='fas fa-times-circle text-danger'></i>
-        )}
-        {/* Second Row */}
-        <div className='card grid-2'>
+      </div>
+
+      {/* Second Row */}
+      {/* Single User Card */}
+      <div className='card'>
+        <p className='is-size-4 is-size-5-mobile'>
+          <strong>&nbsp;Hireable:&nbsp;</strong>
+          {hireable ? (
+            <i className='fas fa-check-circle has-text-success'></i>
+          ) : (
+            <i className='fas fa-times-circle has-text-danger'></i>
+          )}
+        </p>
+        <div className='columns'>
           {/* First Column */}
-          <div className='all-center'>
-            <img
-              src={avatar_url}
-              alt='Profile'
-              className='round-img'
-              style={{ width: '150px' }}
-            />
-            <h1>{login}</h1>
+          <div className=' column section section-padding level content-margin'>
+            <div className='level-item'>
+              {/* Profile Image */}
+              <figure className='image is-128x128'>
+                <img src={avatar_url} alt='Profile' className='is-rounded' />
+              </figure>
+            </div>
+            {/* Profile Name */}
+            <p className='is-size-2 level-item'>{login}</p>
             <ul>
-              <li>
+              {/* Name */}
+              <li className='is-size-4 is-size-5-mobile level-item'>
                 <strong>{name}</strong>
               </li>
+              {/* Location */}
               {location && (
-                <li>
+                <li className=' is-size-4 is-size-5-mobile level-item'>
                   <strong>
                     <i className='fas fa-map-marker-alt'></i> {location}
                   </strong>
@@ -59,94 +82,137 @@ class SingleUser extends Component {
             </ul>
           </div>
           {/* Second Column */}
-          <div style={{ marginLeft: '6rem' }}>
-            <ul className='py-2'>
-              {/* BIO */}
+          <div className='column section section-padding level content-margin'>
+            <ul>
+              {/* Bio */}
               {bio ? (
-                <li>
-                  <strong>Bio:</strong> {bio}
+                <li className='is-size-5 is-size-6-mobile'>
+                  <strong>Bio:&nbsp;</strong>
+                  {bio}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Bio:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'></i> Not
+                  <i className='fas fa-times-circle has-text-danger'></i> Not
                   Provided
                 </li>
               )}
-              {/* COMPANY */}
+              {/* Company */}
               {company ? (
-                <li>
-                  <strong>Company:</strong> {company}
+                <li className='is-size-5 is-size-6-mobile'>
+                  <strong>Company:&nbsp;</strong> {company}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Company:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* JOINED */}
+              {/* Year Created */}
               {created_at ? (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Account Created:</strong> {created_at.substring(0, 4)}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Account Created:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* SITE */}
+              {/* Website */}
               {blog ? (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Site:</strong> {blog}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Site:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
-              {/* EMAIL */}
+              {/* Email */}
               {email ? (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Email:</strong> {email}
                 </li>
               ) : (
-                <li>
+                <li className='is-size-5 is-size-6-mobile'>
                   <strong>Email:</strong>{' '}
-                  <i className='fas fa-times-circle text-danger'> </i> Not
+                  <i className='fas fa-times-circle has-text-danger'> </i> Not
                   Provided
                 </li>
               )}
             </ul>
-
-            {/* GITHUB BUTTON */}
+            {/* Tags */}
+            <div className=' field is-grouped is-grouped-multiline level-item tags-margin'>
+              {/* Followers */}
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Followers
+                  </div>
+                  <div className='tag is-primary is-rounded is-size-6 is-size-7-mobile'>
+                    {followers}
+                  </div>
+                </div>
+              </div>
+              {/* Following */}
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Following
+                  </div>
+                  <div className='tag is-warning is-rounded is-size-6 is-size-7-mobile'>
+                    {following}
+                  </div>
+                </div>
+              </div>
+              {/* Public Repositories */}
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Public Repos
+                  </div>
+                  <div className='tag is-success is-rounded is-size-6 is-size-7-mobile'>
+                    {public_repos}
+                  </div>
+                </div>
+              </div>
+              {/* Public Gists */}
+              <div className='control'>
+                <div className='tags has-addons'>
+                  <div className='tag is-dark is-size-6 is-size-7-mobile'>
+                    Public Gists
+                  </div>
+                  <div className='tag is-info is-rounded is-size-6 is-size-7-mobile'>
+                    {public_gists}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* GitHub Button */}
             {html_url ? (
               <a
                 href={html_url}
-                className='btn btn-dark'
+                className='button is-medium is-dark is-rounded is-size-5 is-size-6-mobile content-margin level-item'
                 rel='noopener noreferrer'
                 target='_blank'
               >
-                Github Page
+                <i className='fab fa-github'></i>
+                &nbsp;Go To GitHub Page
               </a>
             ) : null}
           </div>
-          <div className=''>
-            <div className='badge badge-primary'>Followers: {followers}</div>
-            <div className='badge badge-success'>Following: {following}</div>
-            <div className='badge badge-light'>
-              Public Repos: {public_repos}
-            </div>
-            <div className='badge badge-dark'>Public Gists: {public_gists}</div>
-          </div>
         </div>
-      </Fragment>
-    );
-  }
-}
-
+        {/* Repository Grid */}
+        <div className=''>
+          <Repos repos={repos} />
+        </div>
+      </div>
+    </Fragment>
+  );
+};
 export default SingleUser;
