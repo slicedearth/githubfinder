@@ -1,6 +1,4 @@
-# reactbasics
-
-2020 Semester 1 Client Side Assessment
+# GitHub Finder
 
 ## Description
 
